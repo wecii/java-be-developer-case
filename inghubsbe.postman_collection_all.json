@@ -3,7 +3,7 @@
 		"_postman_id": "cae71483-fe26-466d-ab39-f53bc8b5d4d1",
 		"name": "inghubsbe",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "32824203"
+		"_exporter_id": "32834203"
 	},
 	"item": [
 		{
@@ -522,6 +522,41 @@
 						"v1",
 						"auth",
 						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"boran\",\n    \"email\":\"boran@b2a.com\",\n    \"password\":\"Byesildal1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/v1/auth/register/admin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register",
+						"admin"
 					]
 				}
 			},

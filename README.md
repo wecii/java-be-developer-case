@@ -87,6 +87,8 @@ To authenticate using JWT, follow these steps:
 2. Log in to receive a JWT token.
 3. Send requests to other services' endpoints using the token.
 
+To create an admin user, need to use **auth/register/admin** endpoint
+
 ## Services
 
 ### API Gateway
