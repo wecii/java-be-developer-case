@@ -26,14 +26,13 @@ The application employs JWT (JSON Web Token) for user authentication and consist
     - [Wallet Service](#wallet-service)
     - [Transaction Service](#transaction-service)
 - [Using Docker](#using-docker)
-- [API Reference](#api-reference)
-- [Contributors](#contributors)
-- [License](#license)
 
 ## Project Overview
 
 This microservices application provides users with a secure platform to perform transactions. 
 JWT-based authentication protects user credentials, and each service operates independently within its responsibility area.
+
+You can find a postman collection export file [**inghubsbe.postman_collection_1.json**] to test endpoints of the project.
 
 ## Architecture
 
