@@ -1,0 +1,531 @@
+{
+	"info": {
+		"_postman_id": "cae71483-fe26-466d-ab39-f53bc8b5d4d1",
+		"name": "inghubsbe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32824203"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzQ0MTU3MiwiZXhwIjoxNzI3NDQ1MTcyfQ.r1944fQ7ycrSnsInbskxVIxfPVWqIU8V54yzyhKdq9E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbiIsImlhdCI6MTcyNzI3Mjg1OSwiZXhwIjoxNzI3Mjc2NDU5fQ.fG8wl6_yNVI21el4NtV5EEgPuqWHpxD9lQbu8VjS3Kg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8093/api/v1/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8093",
+							"path": [
+								"api",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Create Wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiMi5jb20iLCJpYXQiOjE3Mjc0NTAxMTQsImV4cCI6MTcyNzQ1MzcxNH0.9S8uhswzBxmsJqbroL4KuiPtcf_nos-fs_gjYHlFLLc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbiIsImlhdCI6MTcyNzI4NzA4NiwiZXhwIjoxNzI3MjkwNjg2fQ.ddTbv3U5DRYpBGI41ZvcxJsq9FYMdbekLqO1_DMm8iY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8089/api/v1/wallet?asset-id=4292cc55-a752-4a49-94cd-ee826ea12333",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "asset-id",
+									"value": "4292cc55-a752-4a49-94cd-ee826ea12333"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Assets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiMi5jb20iLCJpYXQiOjE3Mjc0NTAxMTQsImV4cCI6MTcyNzQ1MzcxNH0.9S8uhswzBxmsJqbroL4KuiPtcf_nos-fs_gjYHlFLLc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8089/api/v1/wallet/asset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"asset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposit to Wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiMi5jb20iLCJpYXQiOjE3Mjc0NTAxMTQsImV4cCI6MTcyNzQ1MzcxNH0.9S8uhswzBxmsJqbroL4KuiPtcf_nos-fs_gjYHlFLLc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":1500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/v1/wallet/f3238c08-e58b-4512-b284-d4eaef553ab3/deposit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"f3238c08-e58b-4512-b284-d4eaef553ab3",
+								"deposit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Wallets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzQ1MDM4MywiZXhwIjoxNzI3NDUzOTgzfQ.FLEcvNNYL3luevgUy3L7I8lsFDfUJGY48iFCGLLs_Qc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8089/api/v1/wallet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdrawal from Wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzQ0MTU3MiwiZXhwIjoxNzI3NDQ1MTcyfQ.r1944fQ7ycrSnsInbskxVIxfPVWqIU8V54yzyhKdq9E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":150\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/v1/wallet/03db24d9-5fd2-4448-9bd7-dfbe58abc44b/withdrawal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"03db24d9-5fd2-4448-9bd7-dfbe58abc44b",
+								"withdrawal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzQ0MTU3MiwiZXhwIjoxNzI3NDQ1MTcyfQ.r1944fQ7ycrSnsInbskxVIxfPVWqIU8V54yzyhKdq9E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8089/api/v1/wallet/asset?asset-name=TRY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"asset"
+							],
+							"query": [
+								{
+									"key": "asset-name",
+									"value": "TRY"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzQ1MDMxOCwiZXhwIjoxNzI3NDUzOTE4fQ.nH00aS4Q6-g8Vsrn20y8U7sZj993XFTaauXuKLL5wEA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"assetId\": \"694dad2b-3bc1-4c47-b0f8-688a95cc1e84\",\n    \"side\": \"BUY\",\n    \"size\": 4,\n    \"price\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8089/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiMi5jb20iLCJpYXQiOjE3Mjc0NTA0MzIsImV4cCI6MTcyNzQ1NDAzMn0.92P4WlmHXgp5DDjHwo1yRehzicvEKSDwmXQueN01XCE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8089/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzQ0MDYzMiwiZXhwIjoxNzI3NDQ0MjMyfQ.V6DwmbGfKl2LAsmT1yze2He7RaJKFNr6s6Ww0iemfao",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8089/api/v1/order/66289f93-1084-4651-8131-ae499fa71d99",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"66289f93-1084-4651-8131-ae499fa71d99"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Match",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiMS5jb20iLCJpYXQiOjE3Mjc0NDg1MzMsImV4cCI6MTcyNzQ1MjEzM30.xXfIfPsegALw3nQORe-J_LjPF8iv-dCXCS-66SvCKgs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8089/api/v1/transaction/match",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"match"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"boran\",\n    \"email\":\"boran@b2.com\",\n    \"password\":\"Byesildal1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"boran@b2.com\",\n    \"password\":\"Byesildal1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/v1/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib3JhbkBiLmNvbSIsImlhdCI6MTcyNzM4NjgxNywiZXhwIjoxNzI3MzkwNDE3fQ.mWPZuwUClUvqmwgfoAU4PnlgJBLPtb2z_3EVw5-YZqc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8090/api/v1/auth/validate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
