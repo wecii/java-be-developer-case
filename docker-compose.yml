@@ -1,0 +1,109 @@
+version: '3'
+
+services:
+  ingpsqldb:
+    image: 'postgres:16'
+    container_name: 'ingpsqldb'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgrespass123}
+      PGDATA: /data/postgres
+      POSTGRES_DB: ingdb
+    volumes:
+      - ingpostgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - internalnet
+
+  ingrabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"  # Dışa açmak istemiyorsanız bu satırı silebilirsiniz
+      - "15672:15672" # Management UI'ye ulaşmak için
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - internalnet
+
+  wallet-service:
+    build:
+      context: .
+      dockerfile: ./wallet/Dockerfile
+    container_name: 'wallet-service'
+    ports:
+      - "8094:8094"
+    networks:
+      - internalnet
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: ./auth/Dockerfile
+    container_name: 'auth-service'
+    ports:
+      - "8090:8090"
+    networks:
+      - internalnet
+      - externalnet
+
+  customer-service:
+    build:
+      context: .
+      dockerfile: ./customer/Dockerfile
+    container_name: 'customer-service'
+    ports:
+      - "8093:8093"
+    networks:
+      - internalnet
+
+  order-service:
+    build:
+      context: .
+      dockerfile: ./order/Dockerfile
+    container_name: 'order-service'
+    ports:
+      - "8091:8091"
+    networks:
+      - internalnet
+    depends_on:
+      - ingrabbitmq
+
+  transaction-service:
+    build:
+      context: .
+      dockerfile: ./transaction/Dockerfile
+    container_name: 'transaction-service'
+    ports:
+      - "8095:8095"
+    networks:
+      - internalnet
+    depends_on:
+      - ingrabbitmq
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./api-gateway/Dockerfile
+    container_name: 'api-gateway'
+    ports:
+      - "8089:8089"
+    networks:
+      - externalnet
+      - internalnet
+    depends_on:
+      - auth-service
+      - customer-service
+      - order-service
+
+networks:
+  internalnet:
+    driver: bridge
+  externalnet:
+    driver: bridge
+
+volumes:
+  ingpostgres:
+    driver: local

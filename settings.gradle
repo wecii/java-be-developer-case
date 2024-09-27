@@ -1,0 +1,8 @@
+rootProject.name = 'app'
+include 'data'
+include 'transaction'
+include 'customer'
+include 'order'
+include 'wallet'
+include 'auth'
+include 'api-gateway'

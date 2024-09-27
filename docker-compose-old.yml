@@ -1,0 +1,89 @@
+version: '3'
+
+services:
+  ingpsqldb:
+    image: 'postgres:16'
+    container_name: 'ingpsqldb'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgrespass123}
+      PGDATA: /data/postgres
+      POSTGRES_DB: ingdb
+    volumes:
+      - ingpostgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - ingpostgresnet
+    restart: unless-stopped
+
+  ingrabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - ingrabbitnet
+
+  ingauth:
+    build:
+      context: ./auth-service  # auth servisinin bulunduğu dizin
+      dockerfile: Dockerfile   # Dockerfile adı (genelde 'Dockerfile')
+    container_name: 'ingauth'
+    ports:
+      - "8081:8081"
+    networks:
+      - ingservicenet
+    depends_on:
+      - ingpsqldb
+
+  customer-service:
+    build:
+      context: ./customer-service  # customer servisinin bulunduğu dizin
+      dockerfile: Dockerfile
+    container_name: 'customer-service'
+    ports:
+      - "8082:8082"
+    networks:
+      - ingservicenet
+    depends_on:
+      - ingpsqldb
+
+  order-service:
+    build:
+      context: ./order-service  # order servisinin bulunduğu dizin
+      dockerfile: Dockerfile
+    container_name: 'order-service'
+    ports:
+      - "8083:8083"
+    networks:
+      - ingservicenet
+    depends_on:
+      - ingpsqldb
+
+  api-gateway:
+    build:
+      context: ./api-gateway  # API Gateway dizini
+      dockerfile: Dockerfile
+    container_name: 'api-gateway'
+    ports:
+      - "8080:8080"
+    networks:
+      - ingservicenet
+    depends_on:
+      - auth-service
+      - customer-service
+      - order-service
+
+volumes:
+  ingpostgres:
+    driver: local
+
+networks:
+  ingpostgresnet:
+  ingrabbitnet:
+    driver: bridge

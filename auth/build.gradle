@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id "org.flywaydb.flyway" version "10.17.2"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+dependencies {
+    implementation project(':data')
+
+    implementation 'org.springframework.boot:spring-boot-starter:3.2.3'
+    implementation 'org.springframework.boot:spring-boot-starter-security:3.2.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.3'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.2.3'
+
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('bootJar') {
+    mainClass = 'org.byesildal.inghubsbe.auth.AuthApplication'
+}
