@@ -33,6 +33,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public UUID createAdmin(String adminName, String adminEmail, String adminPassword) {
+        var user = new User();
+        user.setEmail(adminEmail);
+        user.setName(adminName);
+        user.setPassword(adminPassword);
+        user.setRole(UserRole.ADMIN);
+        return userRepository.save(user).getId();
+    }
+
+    @Override
     public Optional<User> getByEmail(String email) {
         return userRepository.findByEmail(email);
     }

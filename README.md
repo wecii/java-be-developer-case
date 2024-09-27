@@ -1,4 +1,4 @@
-# Microservices Architecture Application
+# Java Backend Developer Case (Brokerage Firm Challenge)
 
 This project represents a microservices architecture developed using Spring Boot. 
 The application employs JWT (JSON Web Token) for user authentication and consists of the following services:
@@ -72,7 +72,7 @@ The application consists of the following components:
     cd java-be-developer-case
     ```
 
-2. Start all services using Docker:
+2. Start all services using Docker, (70 seconds approximately)
     ```bash
     docker-compose up --build
     ```

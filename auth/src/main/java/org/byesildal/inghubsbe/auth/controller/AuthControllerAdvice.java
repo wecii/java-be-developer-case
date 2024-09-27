@@ -43,7 +43,7 @@ public class AuthControllerAdvice {
     @ExceptionHandler({UserExistException.class})
     public ResponseEntity<JsonResponse> insufficientBalance(UserExistException e) {
         var msg = e.getMessage();
-        var status = 422;
+        var status = 409;
         return ResponseEntity.status(status).body(new JsonResponse().fail(msg));
     }
 

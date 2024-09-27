@@ -24,6 +24,12 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponse().data(new UserCreateResponseModel(createdCustomerId)));
     }
 
+    @PostMapping(value = "/register/admin")
+    public ResponseEntity<JsonResponse> createAdmin(@RequestBody @Valid UserCreateRequestModel userCreateRequestModel) {
+        var createdCustomerId = authService.createAdmin(userCreateRequestModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new JsonResponse().data(new UserCreateResponseModel(createdCustomerId)));
+    }
+
     @PostMapping
     public ResponseEntity<JsonResponse> login(@RequestBody @Valid UserLoginModel userLoginModel) {
         var token = authService.login(userLoginModel.getEmail(), userLoginModel.getPassword());

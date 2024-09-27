@@ -27,6 +27,13 @@ public class AuthService{
         return userService.createCustomer(customerCreateRequestModel.getName(), customerCreateRequestModel.getEmail(), passwordEncoder.encode(customerCreateRequestModel.getPassword()));
     }
 
+    public UUID createAdmin(UserCreateRequestModel customerCreateRequestModel) {
+        if (userService.isCustomerExists(customerCreateRequestModel.getEmail()))
+            throw new UserExistException("Email already exists");
+
+        return userService.createCustomer(customerCreateRequestModel.getName(), customerCreateRequestModel.getEmail(), passwordEncoder.encode(customerCreateRequestModel.getPassword()));
+    }
+
     public TokenModel login(String email, String password) {
         var user = userService.getByEmail(email);
         if (user.isEmpty())
